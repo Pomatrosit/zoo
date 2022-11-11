@@ -14,9 +14,10 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { loginValidationSchema } from '../helpers/yup'
 import { useRegisterOwnerMutation } from '../store/auth/auth.api'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useAppDispatch } from '../hooks/redux'
 import { login } from '../store/auth/auth.slice'
+import { setUserData } from '../store/main/main.slice'
 
 const styles = {
   formWrapper: {
@@ -38,7 +39,7 @@ interface IForm {
 }
 
 const Login = () => {
-  const [register, { isLoading, error: loginError, data: loginResponse }] =
+  const [trigger, { isLoading, error: loginError, data: loginResponse }] =
     useRegisterOwnerMutation()
 
   const {
@@ -65,13 +66,6 @@ const Login = () => {
   const changePasswordVisibility = () => {
     setPassportVisible((prev: boolean) => !prev)
   }
-
-  useEffect(() => {
-    if (loginResponse?.token) {
-      localStorage.setItem('token', loginResponse.token)
-      dispatch(login())
-    }
-  }, [loginResponse])
 
   return (
     <>

@@ -3,6 +3,7 @@ import authSlice from './auth/auth.slice'
 import { authApi } from './auth/auth.api'
 import { userApi } from './user/user.api'
 import { setupListeners } from '@reduxjs/toolkit/dist/query'
+import userSlice from './main/main.slice'
 
 export const store = configureStore({
   reducer: {
