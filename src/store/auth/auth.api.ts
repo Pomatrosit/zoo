@@ -10,12 +10,12 @@ interface IRegisterOwnerRequest {
 export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: `${API_URL}/security`,
+    baseUrl: `${API_URL}`,
   }),
   endpoints: (builder) => ({
     registerOwner: builder.mutation<ILoginResponse, IRegisterOwnerRequest>({
       query: (candidate: IRegisterOwnerRequest) => ({
-        url: '/createToken',
+        url: '/login',
         method: 'POST',
         body: candidate,
       }),

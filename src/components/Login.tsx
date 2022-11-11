@@ -53,18 +53,12 @@ const Login = () => {
   const dispatch = useAppDispatch()
 
   const onSubmit: SubmitHandler<IForm> = (data) => {
-    const payload = {
-      login: data.login,
-      password: data.password,
-    }
-    trigger(payload)
+    register(data)
       .unwrap()
       .then((response) => {
-        dispatch(setUserData(response.user))
         localStorage.setItem('token', response.token)
         dispatch(login())
       })
-      .catch((error) => console.log(error))
   }
 
   const [passwordVisible, setPassportVisible] = useState<boolean>(false)
