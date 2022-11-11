@@ -13,6 +13,7 @@ import avatar from '../assets/images/avatars/avatar_default.jpg'
 import { Stack } from '@mui/system'
 import { NAVIGATION } from '../constants/router'
 import { useGetUserQuery } from '../store/user/user.api'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 const styles = {
   root: {
@@ -35,6 +36,8 @@ const AsideNav: FC<IProps> = ({ width }) => {
 
   const { isLoading, error, data } = useGetUserQuery()
 
+  const navigate = useNavigate()
+
   return (
     <Stack sx={{ ...styles.root, width }} p={3}>
       <Box>
@@ -49,7 +52,11 @@ const AsideNav: FC<IProps> = ({ width }) => {
         <Box>
           <List component="nav">
             {navItems.map((item) => (
-              <ListItemButton key={item.id} color="warning">
+              <ListItemButton
+                key={item.id}
+                color="warning"
+                onClick={() => navigate(item.path)}
+              >
                 <ListItemIcon>
                   <item.icon />
                 </ListItemIcon>

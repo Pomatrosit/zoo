@@ -21,7 +21,10 @@ export const userApi = createApi({
     getUser: builder.query<IUserResponse, void>({
       query: () => `${API_URL}/cabinet`,
     }),
+    getAllUsers: builder.query<IUserResponse[], void>({
+      query: () => `${API_URL}/cabinet/users`,
+    }),
   }),
 })
 
-export const { useGetUserQuery } = userApi
+export const { useGetUserQuery, useGetAllUsersQuery } = userApi

@@ -16,7 +16,7 @@ const styles = {
 
 const PublicLayout = () => {
   return (
-    <Stack sx={styles.root}>
+    <Stack sx={styles.root} alignItems="center" justifyContent="center">
       <Box sx={styles.outlet}>
         <Outlet />
       </Box>

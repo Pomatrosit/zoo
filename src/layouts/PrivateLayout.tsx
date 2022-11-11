@@ -17,14 +17,9 @@ const styles = {
 
 const PrivateLayout = () => {
   return (
-    <Stack
-      justifyContent="center"
-      alignItems="center"
-      direction="row"
-      sx={styles.root}
-    >
+    <Stack justifyContent="center" direction="row" sx={styles.root}>
       <AsideNav width={ASIDE_NAV_WIDTH} />
-      <Box sx={styles.outlet} p={5}>
+      <Box sx={styles.outlet} py={10} px={5}>
         <Outlet />
       </Box>
     </Stack>

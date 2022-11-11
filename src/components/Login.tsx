@@ -17,7 +17,6 @@ import { useRegisterOwnerMutation } from '../store/auth/auth.api'
 import { useState } from 'react'
 import { useAppDispatch } from '../hooks/redux'
 import { login } from '../store/auth/auth.slice'
-import { setUserData } from '../store/main/main.slice'
 
 const styles = {
   formWrapper: {
@@ -53,7 +52,7 @@ const Login = () => {
   const dispatch = useAppDispatch()
 
   const onSubmit: SubmitHandler<IForm> = (data) => {
-    register(data)
+    trigger(data)
       .unwrap()
       .then((response) => {
         localStorage.setItem('token', response.token)
