@@ -5,7 +5,7 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
-  auth: false,
+  auth: !!localStorage.getItem('token'),
 }
 
 export const authSlice = createSlice({

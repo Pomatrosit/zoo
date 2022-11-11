@@ -12,6 +12,7 @@ import { GREY } from '../theme/palette'
 import avatar from '../assets/images/avatars/avatar_default.jpg'
 import { Stack } from '@mui/system'
 import { NAVIGATION } from '../constants/router'
+import { useGetUserQuery } from '../store/user/user.api'
 
 const styles = {
   root: {
@@ -32,6 +33,8 @@ interface IProps {
 const AsideNav: FC<IProps> = ({ width }) => {
   const navItems = NAVIGATION
 
+  const { isLoading, error, data } = useGetUserQuery()
+
   return (
     <Stack sx={{ ...styles.root, width }} p={3}>
       <Box>
@@ -39,7 +42,7 @@ const AsideNav: FC<IProps> = ({ width }) => {
           <Stack direction="row" spacing={2} alignItems="center">
             <Avatar alt="user_avatar" src={avatar} />
             <Typography variant="subtitle1" color="grey.800" fontSize={14}>
-              John Doe
+              {data?.name} {data?.second_name}
             </Typography>
           </Stack>
         </Box>

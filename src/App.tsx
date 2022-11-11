@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { PUBLIC_ROUTES, PRIVATE_ROUTES } from './constants/router'
 import { useAppSelector } from './hooks/redux'
@@ -7,11 +8,15 @@ import PublicLayout from './layouts/PublicLayout'
 function App() {
   const auth = useAppSelector((state) => state.auth.auth)
 
+  useEffect(() => {
+    // if (auth)
+  }, [auth])
+
   return (
     <div>
       {!auth ? (
         <Routes>
-          <Route path="/" element={<PublicLayout />}>
+          <Route element={<PublicLayout />}>
             {PUBLIC_ROUTES.map((route) => (
               <Route
                 key={route.id}
@@ -24,7 +29,7 @@ function App() {
         </Routes>
       ) : (
         <Routes>
-          <Route path="/" element={<PrivateLayout />}>
+          <Route element={<PrivateLayout />}>
             {PRIVATE_ROUTES.map((route) => (
               <Route
                 key={route.id}
