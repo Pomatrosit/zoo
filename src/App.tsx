@@ -11,7 +11,6 @@ function App() {
   useEffect(() => {
     // if (auth)
   }, [auth])
-
   return (
     <div>
       {!auth ? (
