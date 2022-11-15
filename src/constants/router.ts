@@ -1,4 +1,4 @@
-import { AccountTree, Apple } from '@mui/icons-material'
+import { AccountTree, Apple, Person, Work } from '@mui/icons-material'
 import JobPage from '../pages/JobPage'
 import LoginPage from '../pages/LoginPage'
 import MainPage from '../pages/MainPage'
@@ -23,12 +23,12 @@ export const NAVIGATION = [
     id: 2,
     path: '/users',
     title: 'Пользователи',
-    icon: Apple,
+    icon: Person,
   },
   {
     id: 3,
     path: '/jobs',
     title: 'Должности',
-    icon: Apple,
+    icon: Work,
   },
 ]
